@@ -1,0 +1,27 @@
+#================mysql==================#
+spring:
+  datasource:
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/picture?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=GMT%2B8
+#===============jpa================#
+  jpa:
+    database: MYSQL
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+  # 手动指定系统缓存使用的缓存。Spring会适配已有Cache的依赖，先后顺序：（JCache -> EhCache -> Redis -> Guava）
+  cache:
+    type: ehcache
+  mvc:
+    static-path-pattern: /**
+  servlet:
+    multipart:
+      max-request-size: 30MB
+      max-file-size: 30MB
